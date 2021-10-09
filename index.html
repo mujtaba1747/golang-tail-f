@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Watcher</title>
+</head>
+<body>
+    <h1 style="text-align: center;"> Logs </h1>
+
+    <p id="log" style="font-size: 25px;"> </p>
+
+    <script>
+        // Making a websocket conn
+        const socket = new WebSocket("ws://localhost:8080/logs");
+
+        // Listen
+        socket.addEventListener('message', function( event ) {
+
+            console.log( event.data );
+
+            document.getElementById('log').innerText = event.data;
+
+        });
+    </script>
+</body>
+</html>
